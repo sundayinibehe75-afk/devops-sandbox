@@ -1,5 +1,3 @@
-version: "3.9"
-
 # DevOps Sandbox Platform — core infrastructure
 # Sandbox app containers are created dynamically by create_env.sh
 

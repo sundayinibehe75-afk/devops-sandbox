@@ -48,7 +48,9 @@ jobs:
             nginx:1.25-alpine nginx -t
 
       - name: Validate docker-compose syntax
-        run: docker compose config --quiet
+        run: |
+          cp .env.example .env
+          docker compose config --quiet
 
   build-images:
     name: Build Docker Images
