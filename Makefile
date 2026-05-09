@@ -65,21 +65,7 @@ endif
 
 health:            ## Show health status of all active environments
 	@echo "── Environment Health Status ──────────────────────────────"
-	@if [ -z "$$(ls envs/*.json 2>/dev/null)" ]; then \
-	  echo "  No active environments."; \
-	else \
-	  for f in envs/*.json; do \
-	    [ -f "$$f" ] || continue; \
-	    python3 -c " \
-import json, time; \
-d=json.load(open('$$f')); \
-now=int(time.time()); \
-exp=d.get('created_epoch',0)+d.get('ttl',1800); \
-rem=max(0,exp-now); \
-print(f\"  {d['id']:40s}  status={d.get('status','?'):12s}  ttl_remaining={rem}s\") \
-    "; \
-	  done; \
-	fi
+	@python3 monitor/show_health.py 2>/dev/null || echo "  No active environments."
 	@echo "──────────────────────────────────────────────────────────"
 
 status:            ## Alias for health
