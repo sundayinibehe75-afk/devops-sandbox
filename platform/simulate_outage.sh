@@ -46,8 +46,6 @@ NETWORK_NAME=$(python3 -c "import json; d=json.load(open('$STATE_FILE')); print(
 
 update_status() {
   local new_status="$1"
-  local tmp
-  tmp=$(mktemp)
   python3 - "$STATE_FILE" "$new_status" <<'PYEOF'
 import json, sys
 path, status = sys.argv[1], sys.argv[2]

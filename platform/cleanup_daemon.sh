@@ -14,7 +14,8 @@ DESTROY_SCRIPT="$SCRIPT_DIR/destroy_env.sh"
 mkdir -p "$ROOT_DIR/logs"
 
 log() {
-  local msg="[$(date -u +"%Y-%m-%dT%H:%M:%SZ")] [cleanup_daemon] $*"
+  local msg
+  msg="[$(date -u +"%Y-%m-%dT%H:%M:%SZ")] [cleanup_daemon] $*"
   echo "$msg" | tee -a "$LOG_FILE"
 }
 
