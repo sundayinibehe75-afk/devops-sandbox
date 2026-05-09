@@ -105,7 +105,7 @@ case "$MODE" in
         docker network connect "$NETWORK_NAME" "$CONTAINER_NAME" 2>/dev/null || true
         echo "Container reconnected to network."
         ;;
-      crashed)
+      crashed|degraded)
         docker start "$CONTAINER_NAME" 2>/dev/null || true
         echo "Container restarted."
         ;;
